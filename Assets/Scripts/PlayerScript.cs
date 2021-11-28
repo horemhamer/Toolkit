@@ -20,6 +20,8 @@ public class PlayerScript : Command
 	private float direction = 0f;
 
 	public static PlayerScript Instance { get; private set; }
+	[SerializeField]
+	GameObject model;
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)
@@ -172,5 +174,9 @@ public class PlayerScript : Command
 		RenderTexture.active = bak_RenderTexture_active;
 		RenderTexture.ReleaseTemporary(render_texture);
 		Texture2D.Destroy(tex_transparent);
+	}
+
+	public Transform GetTransformModel(){
+		return model.transform;
 	}
 }
